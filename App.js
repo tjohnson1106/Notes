@@ -3,16 +3,12 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import { StackNavigator } from "react-navigation";
 
 import Post from "./src/components/Post";
+import navigationStyles from "./src/styles/navigationStyles";
 
 class App extends Component {
   static navigationOptions = {
     title: "Home",
-    headerStyle: {
-      backgroundColor: "#373142"
-    },
-    headerTitleStyle: {
-      color: "#FFF"
-    }
+    ...navigationStyles
   };
 
   goToPost = () => {
@@ -21,10 +17,13 @@ class App extends Component {
 
   render() {
     return (
-      <View>
-        <Text>
-          <Button onPress={this.goToPost} title="Go to post page" />
-        </Text>
+      <View style={styles.container}>
+        <Text>Bracket Factory Notes App</Text>
+        <Button
+          onPress={this.goToPost}
+          title="Go to post page"
+          style={styles.button}
+        />
       </View>
     );
   }
@@ -44,6 +43,6 @@ export default StackNavigator({
     screen: App
   },
   Post: {
-    screen: App
+    screen: Post
   }
 });
